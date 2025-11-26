@@ -20,7 +20,7 @@ const Register = () => {
 
     registerwithemailpass(email, password)
     .then(result=>{
-      navigate('/login')
+      
 
       
       updateProfile(auth.currentUser,{
@@ -30,6 +30,7 @@ const Register = () => {
         
       })
       .then(()=>{
+        navigate('/login')
         console.log(result.user);
 
       })
@@ -47,6 +48,7 @@ const Register = () => {
 
   return (
     <div className="flex flex-col justify-center items-center my-32">
+      <title>Register</title>
       <form onSubmit={handlesubmit}>
         <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
 

@@ -4,6 +4,7 @@ import auth from "../../firebase/firebase.init";
 import { updateProfile } from "firebase/auth";
 
 const Profile = () => {
+  
   const { user,setUser} = useContext(Contextapi);
   const [update, setUpdate] = useState(false);
 
@@ -39,7 +40,9 @@ const Profile = () => {
 
   return (
     <div className="w-[80%] bg-white rounded shadow-2xl mx-auto p-2">
+      <title>My Profile</title>
       <div className="up text-3xl ">
+
         <p>My Profile</p>
       </div>
       <div className="down w-[80%] mx-auto flex gap-2 p-10">

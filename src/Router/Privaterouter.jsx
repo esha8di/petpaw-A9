@@ -1,11 +1,15 @@
 import React, { useContext } from 'react';
 import { Contextapi } from '../Authprovider/Authprovider';
-import { Navigate } from 'react-router';
+import { Navigate, useLocation } from 'react-router';
 
 const Privaterouter = ({children}) => {
    const {user,loading}=useContext(Contextapi);
+   
 
-   if(loading){
+   const location=useLocation(null)
+   console.log('location',location)
+
+   if(loading && user){
 
     return <p>loading .........</p>
     
@@ -15,7 +19,7 @@ const Privaterouter = ({children}) => {
     return children;
    }
 
-   return <Navigate to='/login'></Navigate>
+   return <Navigate state={location.pathname} to='/login'></Navigate>
 };
 
 export default Privaterouter;

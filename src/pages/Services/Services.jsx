@@ -14,7 +14,9 @@ const Services = () => {
         },[])
     
     return (
+        
         <div className='w-[90%] mx-auto my-6 '>
+            <title>Services</title>
             <div>
                 <h2 className='text-3xl font-bold text-center text-green-900'>Popular Winter Care Service</h2>
                 

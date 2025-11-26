@@ -1,11 +1,15 @@
 import React, { useContext } from "react";
-import { Link, useNavigate } from "react-router";
+import { Link, useLocation, useNavigate} from "react-router";
 import  { Contextapi } from "../../Authprovider/Authprovider";
 
 const Login = () => {
 const {signinwithemailpass,user,signinwithgoogle,setUser}=useContext(Contextapi)
 
 const navigate=useNavigate();
+
+const location=useLocation(null);
+console.log(location)
+
 
    const handlesubmit=(e)=>{
     e.preventDefault()
@@ -22,7 +26,7 @@ const navigate=useNavigate();
 
       console.log(result.user);
       setUser(result.user)
-      navigate('/')
+      navigate(location.state || '/')
     })
     .catch(error=>{
       console.log(error);
@@ -50,6 +54,7 @@ const navigate=useNavigate();
 
   return (
     <div className="flex flex-col justify-center items-center my-32">
+      <title>Login</title>
         <form onSubmit={handlesubmit}>
       <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
         
