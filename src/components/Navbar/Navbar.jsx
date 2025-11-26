@@ -66,7 +66,24 @@ const Navbar = () => {
       </div>
       <div className="navbar-end">
         <nav>
-          {!user ? (
+          {user ? (
+            <div className="flex items-center gap-3">
+              <img
+                src={user?.photoURL}
+                alt="user"
+                className="w-10 h-10 rounded-full border border-green-900"
+              />
+
+              <button
+                onClick={handleclick}
+                className={`btn mr-2 ${
+                  active === "logout" ? "bg-green-900 text-white" : ""
+                }`}
+              >
+                Logout {user.displayName}
+              </button>
+            </div>
+          ) : (
             <Link
               to="/login"
               onClick={() => setActive("login")}
@@ -75,15 +92,6 @@ const Navbar = () => {
               }`}
             >
               Login
-            </Link>
-          ) : (
-            <Link
-              onClick={() => handleclick()}
-              className={`btn mr-2 ${
-                active === "logout" ? "bg-green-900 text-white" : ""
-              }`}
-            >
-              Logout {user.displayName}
             </Link>
           )}
 
