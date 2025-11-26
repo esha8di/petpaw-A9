@@ -23,13 +23,13 @@ console.log(location)
 
     signinwithemailpass(email,password)
     .then(result=>{
-
-      console.log(result.user);
       setUser(result.user)
       navigate(location.state || '/')
+      alert('Logged in successfully')
     })
     .catch(error=>{
       console.log(error);
+       alert('error')
     })
     
     
@@ -44,6 +44,7 @@ console.log(location)
       const user=result.user;
       navigate(location.state || '/')
       setUser(user);
+       alert('Logged in successfully')
       
 
     })
