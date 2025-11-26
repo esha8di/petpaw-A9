@@ -1,6 +1,8 @@
 import React from 'react';
 import  { useEffect, useState } from 'react';
 import Servicecard from '../../components/Servicecard/Servicecard';
+// eslint-disable-next-line no-unused-vars
+import { motion } from "motion/react"
 
 const Services = () => {
 
@@ -15,7 +17,10 @@ const Services = () => {
     
     return (
         
-        <div className='w-[90%] mx-auto my-6 '>
+        < motion.div initial={{ scale: 0 }} animate={{
+    scale: 1,
+    transition: { duration: 1 }
+  }}  className='w-[90%] mx-auto my-6 '>
             <title>Services</title>
             <div>
                 <h2 className='text-3xl font-bold text-center text-green-900'>Popular Winter Care Service</h2>
@@ -30,7 +35,7 @@ const Services = () => {
 
             </div>
             
-        </div>
+        </motion.div>
     );
 };
 
