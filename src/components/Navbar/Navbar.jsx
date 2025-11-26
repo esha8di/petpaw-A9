@@ -65,7 +65,7 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
       <div className="navbar-end">
-        <nav>
+        <nav className="md:flex">
           {user ? (
             <div className="flex items-center gap-3">
               <img
@@ -94,8 +94,9 @@ const Navbar = () => {
               Login
             </Link>
           )}
-
-          <Link
+          {
+            !user &&
+            <Link
             to="/register"
             onClick={() => setActive("register")}
             className={`btn mr-2  ${
@@ -104,6 +105,8 @@ const Navbar = () => {
           >
             Register
           </Link>
+          }
+          
         </nav>
       </div>
     </div>
