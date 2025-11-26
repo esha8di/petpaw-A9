@@ -24,7 +24,7 @@ console.log(location)
     signinwithemailpass(email,password)
     .then(result=>{
       setUser(result.user)
-      navigate(location.state || '/')
+      navigate(location?.state || '/')
       alert('Logged in successfully')
     })
     .catch(error=>{
@@ -42,7 +42,7 @@ console.log(location)
     signinwithgoogle()
     .then((result)=>{
       const user=result.user;
-      navigate(location.state || '/')
+      navigate(location?.state || '/')
       setUser(user);
        alert('Logged in successfully')
       
