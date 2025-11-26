@@ -1,10 +1,11 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useLocation, useNavigate} from "react-router";
 import  { Contextapi } from "../../Authprovider/Authprovider";
 
 const Login = () => {
-const {signinwithemailpass,user,signinwithgoogle,setUser}=useContext(Contextapi)
+const {signinwithemailpass,signinwithgoogle,setUser}=useContext(Contextapi)
 
+const [email,setEmail]=useState('')
 const navigate=useNavigate();
 
 const location=useLocation(null);
@@ -18,8 +19,7 @@ console.log(location)
     const password=e.target.password.value;
     
 
-    console.log(email,password)
-    console.log(user)
+    
 
     signinwithemailpass(email,password)
     .then(result=>{
@@ -42,6 +42,7 @@ console.log(location)
     signinwithgoogle()
     .then((result)=>{
       const user=result.user;
+      navigate(location.state || '/')
       setUser(user);
       
 
@@ -50,6 +51,16 @@ console.log(location)
 
     })
   }
+
+  const handleforgot=()=>{
+    // console.log('email',email);
+
+    navigate(`/forgot/${email}`)
+
+
+  }
+
+
 
 
   return (
@@ -60,13 +71,17 @@ console.log(location)
         
 
         <label className="label">Email</label>
-        <input name='email' type="email" className="input" placeholder="Email" />
+        <input onChange={(e)=>setEmail(e.target.value)} name='email' type="email" className="input" placeholder="Email" />
 
         <label className="label">Password</label>
         <input name='password' type="password" className="input" placeholder="Password" />
 
+        <p>Forgot Password? <button onClick={()=>handleforgot()} className="text-red-400">Reset
+          </button></p>
+
         <button  className="btn btn-neutral mt-4">Login</button>
-        <button onClick={handlegooglesignin} className="btn">Sign in with google</button>
+        <button onClick={()=>handlegooglesignin()} className="btn">Sign in with google</button>
+        
          <p>Don't have an Account? <Link className='text-green-900' to='/register'>Register</Link></p>
       </fieldset>
     </form>

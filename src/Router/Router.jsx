@@ -9,6 +9,7 @@ import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
 import Privaterouter from "./Privaterouter";
 import Servicedetails from "../pages/Servicedetails/Servicedetails";
+import Forgotpass from "../pages/Forgotpass/Forgotpass";
 
 const router = createBrowserRouter([
   {
@@ -43,6 +44,10 @@ const router = createBrowserRouter([
             <Servicedetails></Servicedetails>
             
           </Privaterouter>
+        },
+        {
+          path:'/forgot/:email',
+          Component:Forgotpass,
         }
         
     ]
