@@ -106,6 +106,8 @@ const Navbar = () => {
             Register
           </Link>
           }
+            
+          
           
         </nav>
       </div>

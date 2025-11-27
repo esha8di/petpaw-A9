@@ -39,41 +39,33 @@ const Profile = () => {
   };
 
   return (
-    <div className="w-[80%] bg-white rounded shadow-2xl mx-auto p-2">
+    <div className="md:w-[80%]  bg-white rounded shadow-2xl mx-auto p-2">
       <title>My Profile</title>
-      <div className="up text-3xl ">
-
-        <p>My Profile</p>
-      </div>
-      <div className="down w-[80%] mx-auto flex gap-2 p-10">
-        <div className="left">
-          <div className="avatar">
-            <div className="w-24 rounded-xl">
+      <div className="left bg-green-100  p-5 flex flex-col justify-center items-center">
+       <p className="text-black text-2xl font-bold my-3 text-center">Update Your Profile</p>
+        <div className="avatar gap-3 ">
+            <div className="w-50 rounded-xl">
               <img src={user?.photoURL} />
             </div>
-          </div>
-        </div>
-        <div className="right">
-          <div>
-            <p>User Name</p>
-            <hr></hr>
-            <p>{user?.displayName}</p>
-            <p>Email</p>
-            <hr></hr>
-            <p>{user?.email}</p>
-            <p>Photo</p>
-            <hr></hr>
-            <p>{user?.photoURL}</p>
-          </div>
-          <button
+            <div className="text-gray-500" >
+              <p>Name : {user?.displayName}</p>
+            <p>Email : {user?.email}</p>
+             <button
             onClick={()=>setUpdate(!update)}
             className="btn btn-neutral mt-4"
           >
             Update Profile
           </button>
-          {update && (
+            </div>
+            
+          </div>
+           
+
+      </div>
+      <div className="right flex flex-col justify-center items-center p-4 bg-green-100 ">
+        {update && (
             <form onSubmit={handleupdate}>
-              <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
+              <fieldset className=" fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
                 <label className="label">Name</label>
                 <input defaultValue={user?.displayName}
                   name="name"
@@ -89,12 +81,14 @@ const Profile = () => {
                   className="input"
                   placeholder="Photo URL"
                 />
-                <button className="btn">Update</button>
+                <button className="btn bg-green-900 text-white">Update</button>
               </fieldset>
             </form>
           )}
-        </div>
+
       </div>
+
+      
     </div>
   );
 };
