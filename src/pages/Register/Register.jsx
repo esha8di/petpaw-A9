@@ -4,6 +4,7 @@ import { Contextapi } from "../../Authprovider/Authprovider";
 import { updateProfile } from "firebase/auth";
 import auth from "../../firebase/firebase.init";
 
+
 const Register = () => {
   const { registerwithemailpass } = useContext(Contextapi);
   const navigate = useNavigate();
@@ -35,11 +36,12 @@ const Register = () => {
           photoURL: photurl,
         })
           .then(() => {
-            navigate("/login");
+            navigate("/");
+            alert("registration done")
             console.log(result.user);
           })
           .catch((error) => {
-            console.log(error);
+           alert("Something went wrong",error)
           });
       })
       .catch((error) => {
@@ -50,6 +52,7 @@ const Register = () => {
   return (
     <div className="flex flex-col justify-center items-center my-32">
       <title>Register</title>
+      <ToastContainer></ToastContainer>
       <form onSubmit={handlesubmit}>
         <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
           <label className="label">Email</label>

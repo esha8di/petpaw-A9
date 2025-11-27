@@ -2,6 +2,9 @@ import React, { useContext, useState } from "react";
 import { Link, useLocation, useNavigate} from "react-router";
 import  { Contextapi } from "../../Authprovider/Authprovider";
 
+
+
+
 const Login = () => {
 const {signinwithemailpass,signinwithgoogle,setUser}=useContext(Contextapi)
 
@@ -30,9 +33,10 @@ if (!email || !password) {
     signinwithemailpass(email,password)
     .then(result=>{
       setUser(result.user)
+       alert('Logged in successfully')
       console.log('log',result.user)
       navigate(location.state || '/')
-      alert('Logged in successfully')
+     
     })
     .catch(error=>{
       console.log('logineroor',error.message);
@@ -76,6 +80,8 @@ if (!email || !password) {
   return (
     <div className="flex flex-col justify-center items-center my-32">
       <title>Login</title>
+      <ToastContainer></ToastContainer>
+      
         <form onSubmit={handlesubmit}>
       <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
         

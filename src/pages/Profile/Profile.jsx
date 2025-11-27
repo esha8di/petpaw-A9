@@ -31,6 +31,7 @@ const Profile = () => {
           displayName:name,
         photoURL: url
         })
+        
 
       })
       .catch(error=>{
@@ -42,9 +43,9 @@ const Profile = () => {
     <div className="md:w-[80%]  bg-white rounded shadow-2xl mx-auto p-2">
       <title>My Profile</title>
       <div className="left bg-green-100  p-5 flex flex-col justify-center items-center">
-       <p className="text-black text-2xl font-bold my-3 text-center">Update Your Profile</p>
+       <p className="text-black text-2xl font-bold mt-3 mb-24 text-center">Update Your Profile</p>
         <div className="avatar gap-3 ">
-            <div className="w-50 rounded-xl">
+            <div className="w-40 rounded-xl">
               <img src={user?.photoURL} />
             </div>
             <div className="text-gray-500" >
