@@ -53,8 +53,10 @@ if (!email || !password) {
     signinwithgoogle()
     .then((result)=>{
       const user=result.user;
-      navigate(location.state || '/')
       setUser(user);
+     
+      navigate(location.state || '/')
+      
        alert('Logged in successfully')
       
 
@@ -80,8 +82,7 @@ if (!email || !password) {
   return (
     <div className="flex flex-col justify-center items-center my-32">
       <title>Login</title>
-      <ToastContainer></ToastContainer>
-      
+     
         <form onSubmit={handlesubmit}>
       <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
         
