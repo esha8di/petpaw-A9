@@ -80,7 +80,10 @@ const Navbar = () => {
                   active === "logout" ? "bg-green-900 text-white" : ""
                 }`}
               >
-                Logout {user.displayName}
+                Logout{" "}
+                <p className="font-semibold text-green-900 hidden md:block">
+                  {user.displayName}
+                </p>
               </button>
             </div>
           ) : (
@@ -94,21 +97,17 @@ const Navbar = () => {
               Login
             </Link>
           )}
-          {
-            !user &&
+          {!user && (
             <Link
-            to="/register"
-            onClick={() => setActive("register")}
-            className={`btn mr-2  ${
-              active === "register" ? "bg-green-900 text-white" : ""
-            }`}
-          >
-            Register
-          </Link>
-          }
-            
-          
-          
+              to="/register"
+              onClick={() => setActive("register")}
+              className={`btn mr-2  ${
+                active === "register" ? "bg-green-900 text-white" : ""
+              }`}
+            >
+              Register
+            </Link>
+          )}
         </nav>
       </div>
     </div>
