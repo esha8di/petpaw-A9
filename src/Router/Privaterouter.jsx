@@ -6,10 +6,10 @@ const Privaterouter = ({children}) => {
    const {user,loading}=useContext(Contextapi);
    
 
-   const location=useLocation(null)
+   const location=useLocation()
    console.log('location',location)
 
-   if(loading && user){
+   if(loading ){
 
     return <p>loading .........</p>
     

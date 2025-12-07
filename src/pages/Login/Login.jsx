@@ -55,7 +55,7 @@ if (!email || !password) {
       const user=result.user;
       setUser(user);
      
-      navigate(location.state || '/')
+      navigate(location.state?.from  || '/')
       
        alert('Logged in successfully')
       

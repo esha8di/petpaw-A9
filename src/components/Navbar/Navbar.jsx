@@ -7,6 +7,25 @@ const Navbar = () => {
   const { user, signout } = useContext(Contextapi);
   const [active, setActive] = useState("");
 
+  const [isChecked, setIsChecked]= useState(true);
+
+
+
+  const handletheme=()=>{
+    setIsChecked(!isChecked);
+    // console.log(isChecked);
+
+    if(isChecked){
+      document.querySelector('html').setAttribute('data-theme', 'dark')
+    }
+    else{
+            document.querySelector('html').setAttribute('data-theme', 'light')
+
+
+    }
+
+  }
+
   const handleclick = () => {
     setActive("logout");
 
@@ -19,20 +38,33 @@ const Navbar = () => {
 
   const links = (
     <nav>
-      <NavLink to="/" className="mr-2 text-green-900">
+      <NavLink to="/" className="mr-2 ">
         Home
       </NavLink>
-      <NavLink to="/services" className="mr-2  text-green-900">
-        Services
+      <NavLink to="/services" className="mr-2 ">
+       Pets & Supplies
       </NavLink>
-      <NavLink to="/profile" className="mr-2  text-green-900">
-        My Profile
-      </NavLink>
+      {user && (
+        <>
+          <NavLink to="/profile" className="mr-2  ">
+            My Profile
+          </NavLink>
+          <NavLink to="/createlist" className="mr-2 ">
+           Add Listing
+          </NavLink>
+          <NavLink to="/myservices" className="mr-2 ">
+            My Listings
+          </NavLink>
+          <NavLink to="/myorders" className="mr-2 ">
+            My Orders
+          </NavLink>
+        </>
+      )}
     </nav>
   );
 
   return (
-    <div className="navbar bg-base-100 shadow-sm text-green-900">
+    <div className="navbar bg-base-100 shadow-sm">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -59,13 +91,62 @@ const Navbar = () => {
             {links}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl text-green-900">PetPaw</a>
+       <img className="h-[50px] hidden md:block rounded-4xl" src="https://img.freepik.com/premium-vector/vector-cute-dog-logo-design-pet-paw-logo-pet-care-pet-shop_729049-88.jpg" alt="" />
+        <a className="btn btn-ghost text-xl font-bold">PetPaw</a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
       <div className="navbar-end">
-        <nav className="md:flex">
+        <nav className="flex md:flex justify-center items-center gap-1">
+          <label className="toggle text-base-content">
+            <input
+             onClick={handletheme}
+              type="checkbox"
+              value="synthwave"
+              className="theme-controller"
+            />
+
+            <svg
+              aria-label="sun"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+            >
+              <g
+                strokeLinejoin="round"
+                strokeLinecap="round"
+                strokeWidth="2"
+                fill="none"
+                stroke="currentColor"
+              >
+                <circle cx="12" cy="12" r="4"></circle>
+                <path d="M12 2v2"></path>
+                <path d="M12 20v2"></path>
+                <path d="m4.93 4.93 1.41 1.41"></path>
+                <path d="m17.66 17.66 1.41 1.41"></path>
+                <path d="M2 12h2"></path>
+                <path d="M20 12h2"></path>
+                <path d="m6.34 17.66-1.41 1.41"></path>
+                <path d="m19.07 4.93-1.41 1.41"></path>
+              </g>
+            </svg>
+
+            <svg
+              aria-label="moon"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+            >
+              <g
+                strokeLinejoin="round"
+                strokeLinecap="round"
+                strokeWidth="2"
+                fill="none"
+                stroke="currentColor"
+              >
+                <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+              </g>
+            </svg>
+          </label>
           {user ? (
             <div className="flex items-center gap-3">
               <img
@@ -77,11 +158,11 @@ const Navbar = () => {
               <button
                 onClick={handleclick}
                 className={`btn mr-2 ${
-                  active === "logout" ? "bg-green-900 text-white" : ""
+                  active === "logout" ? " text-white" : ""
                 }`}
               >
                 Logout{" "}
-                <p className="font-semibold text-green-900 hidden md:block">
+                <p className="font-semibold  hidden md:block">
                   {user.displayName}
                 </p>
               </button>
@@ -91,7 +172,7 @@ const Navbar = () => {
               to="/login"
               onClick={() => setActive("login")}
               className={`btn mr-2 ${
-                active === "login" ? "bg-green-900 text-white" : ""
+                active === "login" ? " text-white" : ""
               }`}
             >
               Login
@@ -102,7 +183,7 @@ const Navbar = () => {
               to="/register"
               onClick={() => setActive("register")}
               className={`btn mr-2  ${
-                active === "register" ? "bg-green-900 text-white" : ""
+                active === "register" ? " text-white" : ""
               }`}
             >
               Register

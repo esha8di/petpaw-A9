@@ -11,6 +11,10 @@ import Privaterouter from "./Privaterouter";
 import Servicedetails from "../pages/Servicedetails/Servicedetails";
 import Forgotpass from "../pages/Forgotpass/Forgotpass";
 import Error from "../pages/Error/Error";
+import Createlist from "../pages/Createlist/Createlist";
+import MyService from "../pages/MyService/MyService";
+import Edit from "../pages/Edit/Edit";
+import Myorders from "../pages/Myorders/Myorders";
 
 const router = createBrowserRouter([
   {
@@ -50,6 +54,35 @@ const router = createBrowserRouter([
         {
           path:'/forgot/:email',
           Component:Forgotpass,
+        },
+        {
+          path:'/createlist',
+          element:<Privaterouter>
+            <Createlist></Createlist>
+          </Privaterouter>
+         
+        },
+        
+        {
+          path:'/myservices',
+          element:<Privaterouter>
+            <MyService></MyService>
+          </Privaterouter>
+         
+        },
+        {
+          path:'/myservices/:id',
+         element:<Privaterouter>
+           <Edit></Edit>
+          </Privaterouter>
+          
+        },
+        {
+          path:'/myorders',
+         element:<Privaterouter>
+           <Myorders></Myorders>
+          </Privaterouter>
+          
         }
         
     ]
