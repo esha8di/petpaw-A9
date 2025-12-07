@@ -15,12 +15,14 @@ import Createlist from "../pages/Createlist/Createlist";
 import MyService from "../pages/MyService/MyService";
 import Edit from "../pages/Edit/Edit";
 import Myorders from "../pages/Myorders/Myorders";
+import Contact from "../pages/Contactterm/Contact";
 
 const router = createBrowserRouter([
   {
     path: "/",
     Component:Root,
     errorElement:<Error></Error>,
+    
     children:[
         {
             index:true,
@@ -83,7 +85,11 @@ const router = createBrowserRouter([
            <Myorders></Myorders>
           </Privaterouter>
           
-        }
+        },
+        {
+          path:'/contact',
+          Component:Contact,
+        },
         
     ]
   },
